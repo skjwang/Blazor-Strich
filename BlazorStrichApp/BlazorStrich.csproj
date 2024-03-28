@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup Label="Globals">
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\StrichInterop_0.js" />
+    <Content Remove="wwwroot\strich_0.js" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <SupportedPlatform Include="browser" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.25" />
+    <PackageReference Include="System.Threading.Tasks" Version="4.3.0" />
+  </ItemGroup>
+
+</Project>

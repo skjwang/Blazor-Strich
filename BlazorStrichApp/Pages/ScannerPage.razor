@@ -1,0 +1,47 @@
+﻿@page "/scannerPage"
+@inject IJSRuntime JS
+@implements IDisposable
+
+<PageTitle>Strich on Blazor</PageTitle>
+
+<br/>
+<p role="status">Scan result: @ReadBarcode.ScanResult</p>
+
+<button class="btn btn-primary" @onclick="ScanOp">Click me</button>
+
+
+<div>
+    <div id="scanner" style="position: relative; height: 300px"></div>     
+</div> 
+
+@code {   
+
+    protected async override void OnInitialized()
+    {
+        StrichInterop.StrichInterop strichInterop = new StrichInterop.StrichInterop(JS);
+        await strichInterop.initStrich(JS);
+    }
+
+    public StrichInterop.BarcodeString ReadBarcode = new StrichInterop.BarcodeString();
+    private System.Threading.Timer? Timer;
+
+    public async Task ScanOp()
+    {
+        StrichInterop.StrichInterop strichInterop = new StrichInterop.StrichInterop(JS);
+        ReadBarcode.ScanResult = "Start scanning ...";
+        await strichInterop.runStrich(JS, ReadBarcode);
+
+        Timer = new System.Threading.Timer(_ =>
+        {
+            InvokeAsync(StateHasChanged);
+        }, null, 500, 500);
+    }
+
+    void IDisposable.Dispose()
+    {
+        Timer?.Dispose();
+        Timer = null;
+    }
+
+
+}

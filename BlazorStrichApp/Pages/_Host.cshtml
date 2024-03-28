@@ -1,0 +1,21 @@
+﻿@page "/"
+@namespace BlazorStrichApp.Pages
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = "_Layout";
+}
+
+@* <!DOCTYPE html>
+<html lang="en">
+<head>    
+</head>
+
+<body>
+    <component type="typeof(App)" render-mode="ServerPrerendered" />
+    <script src="https://cdn.jsdelivr.net/npm/@@pixelverse/strichjs-sdk@@1.4.4"></script>
+    <script src="_content/BlazorStrich/strich.js"></script>
+</body>
+
+</html> *@
+
+<component type="typeof(App)" render-mode="ServerPrerendered" />
